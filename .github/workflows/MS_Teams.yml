@@ -59,7 +59,7 @@ jobs:
                 },
               ],
           }'
-          
+
         run: >-
           curl -H 'Content-Type: application/json' -d ${{ msTeamsCard }} ${{ secrets.test_hook }}
 
