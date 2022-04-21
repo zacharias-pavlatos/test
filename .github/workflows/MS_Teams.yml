@@ -2,26 +2,23 @@ name: MS Teams WebHook
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3    
+      - uses: actions/checkout@v3
       # Runs a single command using the runners shell
       - name: Run a one-line script
-      
+
         # Variables
         env:
           # WorkFlow
-          workFlowName : ${{github.event.workflow.name}}
-          workFlowConclusion : ${{github.event.workflow.conclusion}}
-          workFlowRunNumber : ${{github.event.workflow.run_number}}
-          workFlowRunUrl : ${{github.event.workflow.run_html_url}}
+          workFlowName: ${{github.event.workflow.name}}
+          workFlowConclusion: ${{github.event.workflow.conclusion}}
+          workFlowRunNumber: ${{github.event.workflow.run_number}}
+          workFlowRunUrl: ${{github.event.workflow.run_html_url}}
           # Repositoy
           repositoryName: ${{ github.event.repository.name }}
           repositoryURL: ${{ github.event.repository.html_url }}
@@ -33,13 +30,33 @@ jobs:
           commitMsg: ${{ github.event.head_commit.message }}
           commitUrl: ${{github.event.commit.html_url}}
           # Event
-          eventType : ${{github.event.type}}
-          eventUrl : ${{github.event.html_url}}
-          
-          
+          eventType: ${{github.event.type}}
+          eventUrl: ${{github.event.html_url}}
+
         run: >-
-            curl -H 'Content-Type: application/json' 
-            -d '{"text": "hook is on ${{ github.event }} "}' ${{ secrets.test_hook }}
+          curl -H 'Content-Type: application/json' 
+          -d '{"text": "
+
+          workFlowName: ${{ env.workFlowName }} 
+          workFlowConclusion: ${{ env.workFlowConclusion }}
+          workFlowRunNumber: ${{ env.workFlowRunNumber }}
+          workFlowRunUrl: ${{ env.workFlowRunUrl }}
+
+          repositoryName : ${{ env.repositoryName }}
+          repositoryURL: ${{ env.repositoryURL }}
+
+          authorName: ${{ env.authorName }}
+          authorUrl: ${{ env.authorUrl }}
+          authorAvatarUrl: ${{ env.authorAvatarUrl }}
+
+          commitMsg: ${{ env.commitMsg }}
+          commitUrl: ${{ env.commitUrl }}
+
+          eventType: ${{ env.eventType }}
+          eventUrl: ${{ env.eventUrl }}
+
+
+          "}' ${{ secrets.test_hook }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
