@@ -18,7 +18,7 @@ jobs:
           repositoryName: ${{ github.event.repository.name }}
           repositoryURL: ${{ github.event.repository.html_url }}
           # Author
-          authorName: ${{ github.event.head_commit.author.name }}
+          authorName: "zak"
           committerName: ${{ github.event.head_commit.committer.name }}
           authorUrl: ${{ github.event.author.html_url }}
           authorAvatarUrl: ${{ github.event.author.avatar_url }}
@@ -34,14 +34,14 @@ jobs:
             "@context": "https: //schema.org/extensions",
             "themeColor": "0078D7",
             "summary": "notificationSummary",
-            "title": ${{env.commitMsg}},
+            "title": ${{ env.commitMsg }},
             "sections":
               [
                 {
                   "activityTitle": $env.authorName,
                   "activityImage": "avatar_url",
-                  "activitySubtitle": "sdf",
-                },
+                  "activitySubtitle": "sdf"
+                }
               ],
             "potentialAction":
               [
@@ -49,15 +49,15 @@ jobs:
                   "@context": "http: //schema.org",
                   "target": "ssdfsdfs",
                   "@type": "ViewAction",
-                  "name": "View Workflow Run",
+                  "name": "View Workflow Run"
                 },
                 {
                   "@context": "http: //schema.org",
                   "target": "[commit.data.html_url]",
                   "@type": "ViewAction",
-                  "name": "View Commit Changes",
-                },
-              ],
+                  "name": "View Commit Changes"
+                }
+              ]
           }'
 
         run: >-
