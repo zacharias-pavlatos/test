@@ -1,0 +1,24 @@
+name: MS Teams WebHook
+
+on:
+    pull_request:
+        branches:
+            - master
+
+jobs:
+  MS_Teams_WebHook:
+    runs-on: ubuntu-latest
+
+    steps:
+   
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: curl -H "Content-Type: application/json" -d '{"text": "hook is on"}' ${{ secrets.test_hook }}
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
