@@ -18,7 +18,7 @@ jobs:
       - name: Run a one-line script
         run: >-
             curl -H 'Content-Type: application/json' 
-            -d '{"text": "hook is on ${root.commit.message} ${{root.commit.message}} "}' ${{ secrets.test_hook }}
+            -d '{"text": "hook is on ${{ github.event.head_commit.message }} "}' ${{ secrets.test_hook }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
