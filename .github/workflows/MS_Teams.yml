@@ -38,7 +38,7 @@ jobs:
             "sections":
               [
                 {
-                  "activityTitle": "${{env.authorName}}",
+                  "activityTitle": $env.authorName,
                   "activityImage": "avatar_url",
                   "activitySubtitle": "sdf",
                 },
