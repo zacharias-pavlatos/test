@@ -34,11 +34,11 @@ jobs:
             "@context": "https: //schema.org/extensions",
             "themeColor": "0078D7",
             "summary": "notificationSummary",
-            "title": "${{ env.commitMsg }}",
+            "title": ${{ env.commitMsg }},
             "sections":
               [
                 {
-                  "activityTitle": "${{ env.authorName }}",
+                  "activityTitle": ${{ env.authorName }},
                   "activityImage": "avatar_url",
                   "activitySubtitle": "sdf"
                 }
