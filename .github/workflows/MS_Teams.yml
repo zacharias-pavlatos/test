@@ -23,12 +23,13 @@ jobs:
           repositoryName: ${{ github.event.repository.name }}
           repositoryURL: ${{ github.event.repository.html_url }}
           # Author
-          authorName: ${{ github.event.author.username }}
+          authorName: ${{ github.event.head_commit.author.name }}
+          committerName: ${{ github.event.head_commit.committer.name }}
           authorUrl: ${{ github.event.author.html_url }}
           authorAvatarUrl: ${{ github.event.author.avatar_url }}
           # Commit
           commitMsg: ${{ github.event.head_commit.message }}
-          commitUrl: ${{github.event.commit.html_url}}
+          commitUrl: ${{github.event.head_commit.html_url}}
           # Event
           eventType: ${{github.event.type}}
           eventUrl: ${{github.event.html_url}}
