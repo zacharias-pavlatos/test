@@ -29,25 +29,40 @@ jobs:
           eventType: ${{github.event.type}}
           eventUrl: ${{github.event.html_url}}
 
+          msTeamsCard:
+            {
+              "@type": "MessageCard",
+              "@context": "https: //schema.org/extensions",
+              "themeColor": "0078D7",
+              "summary": "notificationSummary",
+              "title": ${{env.commitMsg}},
+              "sections":
+                [
+                  {
+                    "activityTitle": "${{env.authorName}}",
+                    "activityImage": "avatar_url",
+                    "activitySubtitle": "sdf",
+                  },
+                ],
+              "potentialAction":
+                [
+                  {
+                    "@context": "http: //schema.org",
+                    "target": "ssdfsdf",
+                    "@type": "ViewAction",
+                    "name": "View Workflow Run",
+                  },
+                  {
+                    "@context": "http: //schema.org",
+                    "target": "[commit.data.html_url]",
+                    "@type": "ViewAction",
+                    "name": "View Commit Changes",
+                  },
+                ],
+            }
+
         run: >-
-          curl -H 'Content-Type: application/json' 
-          -d '{"text": "
-
-          repositoryName : ${{ env.repositoryName }}
-          repositoryURL: ${{ env.repositoryURL }}
-
-          authorName: ${{ env.authorName }}
-          authorUrl: ${{ env.authorUrl }}
-          authorAvatarUrl: ${{ env.authorAvatarUrl }}
-
-          commitMsg: ${{ env.commitMsg }}
-          commitUrl: ${{ env.commitUrl }}
-
-          eventType: ${{ env.eventType }}
-          eventUrl: ${{ env.eventUrl }}
-
-
-          "}' ${{ secrets.test_hook }}
+          curl -H 'Content-Type: application/json' -d ${{ msTeamsCard }} ${{ secrets.test_hook }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
