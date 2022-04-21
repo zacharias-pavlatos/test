@@ -24,21 +24,21 @@ jobs:
           authorAvatarUrl: ${{ github.event.author.avatar_url }}
           # Commit
           commitMsg: ${{ github.event.head_commit.message }}
-          commitUrl: ${{github.event.head_commit.html_url}}
+          commitUrl: ${{ github.event.head_commit.html_url} }
           # Event
-          eventType: ${{github.event.type}}
-          eventUrl: ${{github.event.html_url}}
+          eventType: ${{ github.event.type }}
+          eventUrl: ${{ github.event.html_url }}
 
           msTeamsCard: '{
             "@type": "MessageCard",
             "@context": "https: //schema.org/extensions",
             "themeColor": "0078D7",
             "summary": "notificationSummary",
-            "title": ${{env.commitMsg}},
+            "title": "${{ env.commitMsg }}",
             "sections":
               [
                 {
-                  "activityTitle": ${{ env.authorName }},
+                  "activityTitle": "${{ env.authorName }}",
                   "activityImage": "avatar_url",
                   "activitySubtitle": "sdf",
                 },
@@ -61,7 +61,36 @@ jobs:
           }'
 
         run: >-
-          curl -H 'Content-Type: application/json' -d '${{ env.msTeamsCard }}' ${{ secrets.test_hook }}
+          curl -H 'Content-Type: application/json' -d '{
+            "@type": "MessageCard",
+            "@context": "https: //schema.org/extensions",
+            "themeColor": "0078D7",
+            "summary": "notificationSummary",
+            "title": ${{ env.commitMsg }},
+            "sections":
+              [
+                {
+                  "activityTitle": "${{ env.authorName }}",
+                  "activityImage": "avatar_url",
+                  "activitySubtitle": "sdf",
+                },
+              ],
+            "potentialAction":
+              [
+                {
+                  "@context": "http: //schema.org",
+                  "target": "ssdfsdfs",
+                  "@type": "ViewAction",
+                  "name": "View Workflow Run",
+                },
+                {
+                  "@context": "http: //schema.org",
+                  "target": "[commit.data.html_url]", 
+                  "@type": "ViewAction",
+                  "name": "View Commit Changes",
+                },
+              ],
+          }' ${{ secrets.test_hook }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
