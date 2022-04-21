@@ -2,16 +2,18 @@ name: MS Teams WebHook
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  MS_Teams_WebHook:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-   
       - uses: actions/checkout@v3
-
+      
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: >-
