@@ -53,7 +53,7 @@ jobs:
                 },
                 {
                   "@context": "http: //schema.org",
-                  "target": "[commit.data.html_url]",
+                  "target": "[commit.data.html_url]", 
                   "@type": "ViewAction",
                   "name": "View Commit Changes",
                 },
