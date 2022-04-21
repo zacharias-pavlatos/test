@@ -1,9 +1,8 @@
 name: MS Teams WebHook
 
 on:
-    pull_request:
-        branches:
-            - main
+  push:
+    branches: [ master ]
 
 jobs:
   MS_Teams_WebHook:
