@@ -14,11 +14,6 @@ jobs:
 
         # Variables
         env:
-          # WorkFlow
-          workFlowName: ${{github.event.workflow.name}}
-          workFlowConclusion: ${{github.event.workflow.conclusion}}
-          workFlowRunNumber: ${{github.event.workflow.run_number}}
-          workFlowRunUrl: ${{github.event.workflow.run_html_url}}
           # Repositoy
           repositoryName: ${{ github.event.repository.name }}
           repositoryURL: ${{ github.event.repository.html_url }}
@@ -37,11 +32,6 @@ jobs:
         run: >-
           curl -H 'Content-Type: application/json' 
           -d '{"text": "
-
-          workFlowName: ${{ env.workFlowName }} 
-          workFlowConclusion: ${{ env.workFlowConclusion }}
-          workFlowRunNumber: ${{ env.workFlowRunNumber }}
-          workFlowRunUrl: ${{ env.workFlowRunUrl }}
 
           repositoryName : ${{ env.repositoryName }}
           repositoryURL: ${{ env.repositoryURL }}
