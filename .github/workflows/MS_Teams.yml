@@ -14,7 +14,7 @@ jobs:
 
         # Variables
         env:
-          # Repositoy
+          # Repository
           repositoryName: ${{ github.event.repository.name }}
           repositoryURL: ${{ github.event.repository.html_url }}
           # Author
@@ -34,11 +34,11 @@ jobs:
             "@context": "https: //schema.org/extensions",
             "themeColor": "0078D7",
             "summary": "notificationSummary",
-            "title": ${{ env.commitMsg }},
+            "title": $commitMsg,
             "sections":
               [
                 {
-                  "activityTitle": ${{ env.authorName }},
+                  "activityTitle": $authorName,
                   "activityImage": "avatar_url",
                   "activitySubtitle": "sdf"
                 }
@@ -47,7 +47,7 @@ jobs:
               [
                 {
                   "@context": "http: //schema.org",
-                  "target": "ssdfsdfs",
+                  "target": "test",
                   "@type": "ViewAction",
                   "name": "View Workflow Run"
                 },
