@@ -29,37 +29,6 @@ jobs:
           eventType: ${{ github.event.type }}
           eventUrl: ${{ github.event.html_url }}
 
-          msTeamsCard: '{
-            "@type": "MessageCard",
-            "@context": "https: //schema.org/extensions",
-            "themeColor": "0078D7",
-            "summary": "notificationSummary",
-            "title": ${{ env.commitMsg }},
-            "sections":
-              [
-                {
-                  "activityTitle": "${{ env.authorName }}",
-                  "activityImage": "avatar_url",
-                  "activitySubtitle": "sdf",
-                },
-              ],
-            "potentialAction":
-              [
-                {
-                  "@context": "http: //schema.org",
-                  "target": "ssdfsdfs",
-                  "@type": "ViewAction",
-                  "name": "View Workflow Run",
-                },
-                {
-                  "@context": "http: //schema.org",
-                  "target": "[commit.data.html_url]", 
-                  "@type": "ViewAction",
-                  "name": "View Commit Changes",
-                },
-              ],
-          }'
-
         run: >-
           curl -H 'Content-Type: application/json' -d '{
             "@type": "MessageCard",
@@ -81,7 +50,7 @@ jobs:
                   "@context": "http: //schema.org",
                   "target": "ssdfsdfs",
                   "@type": "ViewAction",
-                  "name": "View Workflow Run",
+                  "name": "View Workflow Run"
                 },
                 {
                   "@context": "http: //schema.org",
