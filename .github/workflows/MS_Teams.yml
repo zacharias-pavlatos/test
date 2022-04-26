@@ -35,7 +35,7 @@ jobs:
             "@context": "https: //schema.org/extensions",
             "themeColor": "0078D7",
             "summary": "notificationSummary",
-            "title": "${commitMsg}",
+            "title": $commitMsg,
             "sections":
               [
                 {
