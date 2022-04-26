@@ -49,15 +49,11 @@ const sendPostRequest = async (msTeamsCard) => {
     //   commit_sha: sha,
     // });
 
-    const response = await axios.post(
-      msTeamsWebhook,
-      { msTeamsCard, result },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.post(msTeamsWebhook, msTeamsCard, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     console.log(response);
     core.debug(response.data);
   } catch (error) {
@@ -66,17 +62,17 @@ const sendPostRequest = async (msTeamsCard) => {
 };
 
 sendPostRequest({
-  hash: github.context.payload.head_commit.id,
-  commitUrl: github.context.payload.head_commit.url,
-  pusher: github.context.payload.pusher.name,
-  author: github.context.payload.head_commit.author,
-  timestamp: github.context.payload.head_commit.timestamp,
-  title: github.context.payload.head_commit.message.split("\n")[0],
-  message: github.context.payload.head_commit.message.split("\n")[1],
+  // hash: github.context.payload.head_commit.id,
+  // commitUrl: github.context.payload.head_commit.url,
+  // pusher: github.context.payload.pusher.name,
+  // author: github.context.payload.head_commit.author,
+  // timestamp: github.context.payload.head_commit.timestamp,
+  // title: github.context.payload.head_commit.message.split("\n")[0],
+  // message: github.context.payload.head_commit.message.split("\n")[1],
   //commits: github.context.payload.commits,
   data: {
     github,
     process: process.env,
-    result,
+    // result,
   },
 });
