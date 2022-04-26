@@ -40,23 +40,28 @@ const msTeamsCard = {
 
 const sendPostRequest = async (msTeamsCard) => {
   try {
-    const response = await axios.post(msTeamsWebhook, msTeamsCard, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const result =
+      await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        commit_sha: sha,
+      });
+
+    const response = await axios.post(
+      msTeamsWebhook,
+      { msTeamsCard, result },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     console.log(response);
     core.debug(response.data);
   } catch (error) {
     console.error(error);
   }
 };
-
-const result = await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
-  owner: context.repo.owner,
-  repo: context.repo.repo,
-  commit_sha: sha,
-});
 
 sendPostRequest({
   hash: github.context.payload.head_commit.id,
