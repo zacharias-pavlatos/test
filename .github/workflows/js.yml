@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  hello_world_job:
+  msTeamsApp:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
@@ -17,9 +17,8 @@ jobs:
       #   run: npm ci
       - name: Runs the JS file
         uses: ./.github/msTeams/
-        id: hello
+        id: msTeamsJob
         with:
           ms-teams-webhook-uri: ${{ secrets.test_hook }}
-      # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The time was ${{ steps.msTeamsJob.outputs.time }}"
