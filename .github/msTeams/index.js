@@ -35,7 +35,11 @@ const msTeamsCard = {
 
 const sendPostRequest = async (msTeamsCard) => {
   try {
-    const response = await axios.post(msTeamsWebhook, msTeamsCard);
+    const response = await axios.post(msTeamsWebhook, msTeamsCard, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     console.log(response);
     core.debug(response.data);
   } catch (error) {
