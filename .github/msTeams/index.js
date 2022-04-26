@@ -1,5 +1,8 @@
+//inputs
 const core = require("@actions/core");
 const axios = require("axios");
+
+//Environment Variables
 const msTeamsWebhook = core.getInput("ms-teams-webhook-uri", {
   required: true,
 });
@@ -38,6 +41,7 @@ const sendPostRequest = async (msTeamsCard) => {
     const response = await axios.post(msTeamsWebhook, msTeamsCard, {
       headers: {
         "Content-Type": "application/json",
+        "Content-Length": requestBodyData.length,
       },
     });
     console.log(response);
