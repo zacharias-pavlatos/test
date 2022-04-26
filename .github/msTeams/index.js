@@ -41,7 +41,6 @@ const sendPostRequest = async (msTeamsCard) => {
     const response = await axios.post(msTeamsWebhook, msTeamsCard, {
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": requestBodyData.length,
       },
     });
     console.log(response);
