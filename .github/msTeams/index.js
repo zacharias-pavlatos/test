@@ -57,7 +57,7 @@ sendPostRequest({
   g: github.event,
   c: github.context,
   variables: {
-    hash: github.context.head_commit.id,
+    hash: github.context.head_commit,
     commitUrl: github.context.head_commit.url,
     pusher: github.context.head_commit.pusher.name,
     author: github.context.head_commit.author,
