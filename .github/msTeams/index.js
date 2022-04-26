@@ -63,5 +63,6 @@ sendPostRequest({
   data: {
     github,
     process: process.env,
+    la: github.event.number,
   },
 });
