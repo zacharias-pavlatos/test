@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Hello world action step
-        uses: ."./msTeams/index.js"
+        uses: ./.github/msTeams/index.js
         id: hello
         with:
           who-to-greet: "Mona the Octocat"
