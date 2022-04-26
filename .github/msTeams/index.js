@@ -58,7 +58,7 @@ sendPostRequest({
   //   variables: {
   //     hash: github.context.head_commit,
   //     commitUrl: github.context.head_commit.url,
-  //     pusher: github.context.head_commit.pusher.name,
+  //     pusher: github. context.head_commit.pusher.name,
   //     author: github.context.head_commit.author,
   //     timestamp: github.context.head_commit.timestamp, // needs to be cleaned up
   //   },
