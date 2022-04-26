@@ -43,11 +43,11 @@ const msTeamsCard = {
 const sendPostRequest = async (msTeamsCard) => {
   try {
     const result =
-      await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        commit_sha: sha,
-      });
+      // await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+      //   owner: context.repo.owner,
+      //   repo: context.repo.repo,
+      //   commit_sha: sha,
+      // });
 
     const response = await axios.post(
       msTeamsWebhook,
