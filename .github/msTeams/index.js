@@ -1,5 +1,6 @@
 //inputs
 const core = require("@actions/core");
+const github = require("@actions/github");
 const axios = require("axios");
 
 //Environment Variables
@@ -53,5 +54,6 @@ const sendPostRequest = async (msTeamsCard) => {
 sendPostRequest({
   a: process.env,
   b: process.env.repository,
-  g: github.event.head_commit,
+  g: github,
+  c: github.context,
 });
