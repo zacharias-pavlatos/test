@@ -1,4 +1,4 @@
-name: "MsTeams Notifier"
+name: "Hello World"
 
 on:
   push:
