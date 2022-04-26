@@ -1,7 +1,7 @@
 //inputs
 const core = require("@actions/core");
 const github = require("@actions/github");
-const octokit = github.getOctokit();
+//const octokit = github.getOctokit();
 
 const axios = require("axios");
 
@@ -42,12 +42,12 @@ const msTeamsCard = {
 
 const sendPostRequest = async (msTeamsCard) => {
   try {
-    const result =
-      await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        commit_sha: sha,
-      });
+    //const result =
+    // await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+    //   owner: context.repo.owner,
+    //   repo: context.repo.repo,
+    //   commit_sha: sha,
+    // });
 
     const response = await axios.post(
       msTeamsWebhook,
