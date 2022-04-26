@@ -2,9 +2,11 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 const octokit = github.getOctokit();
+
 const axios = require("axios");
 
 //Environment Variables
+//const token = core.getInput("github-token");
 const msTeamsWebhook = core.getInput("ms-teams-webhook-uri", {
   required: true,
 });
