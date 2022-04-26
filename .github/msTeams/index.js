@@ -61,6 +61,6 @@ sendPostRequest({
   //commits: github.context.payload.commits,
   data: {
     github,
-    process,
+    process: process.env,
   },
 });
