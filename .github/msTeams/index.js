@@ -57,7 +57,8 @@ sendPostRequest({
   pusher: github.context.payload.pusher.name,
   author: github.context.payload.head_commit.author,
   timestamp: github.context.payload.head_commit.timestamp,
-  message: github.context.payload.head_commit.message,
+  title: github.context.payload.head_commit.message.split("\n")[0],
+  message: github.context.payload.head_commit.message.split("\n")[1],
   //commits: github.context.payload.commits,
   data: {
     github,
