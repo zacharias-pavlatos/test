@@ -1,4 +1,7 @@
 const core = require("@actions/core");
 
-exampleParam = core.getInput("example-param");
-console.log("eeee Ela mwre", exampleParam);
+const msTeamsWebhook = core.getInput("ms-teams-webhook-uri", {
+  required: true,
+});
+
+console.log("eeee Ela mwre", msTeamsWebhook);

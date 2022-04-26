@@ -7,6 +7,9 @@ inputs:
     default: "World"
   example-param:
     description: "An example parameter"
+  ms-teams-webhook-uri:
+    description: "Microsoft Teams Webhook URI"
+    required: true
 outputs:
   time: # id of output
     description: "The time we greeted you"
