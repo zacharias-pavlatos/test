@@ -52,11 +52,15 @@ const sendPostRequest = async (msTeamsCard) => {
 };
 
 sendPostRequest({
-  hash: github.context.payload.head_commit,
+  hash: github.context.payload.head_commit.id,
   commitUrl: github.context.payload.head_commit.url,
   pusher: github.context.payload.pusher.name,
   author: github.context.payload.head_commit.author,
   timestamp: github.context.payload.head_commit.timestamp,
   message: github.context.payload.head_commit.message,
-  commits: github.context.payload.commits,
+  //commits: github.context.payload.commits,
+  data: {
+    github,
+    process,
+  },
 });
