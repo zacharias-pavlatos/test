@@ -1,6 +1,7 @@
 //inputs
 const core = require("@actions/core");
 const github = require("@actions/github");
+const octokit = github.getOctokit();
 const axios = require("axios");
 
 //Environment Variables
@@ -51,6 +52,12 @@ const sendPostRequest = async (msTeamsCard) => {
   }
 };
 
+const result = await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+  commit_sha: sha,
+});
+
 sendPostRequest({
   hash: github.context.payload.head_commit.id,
   commitUrl: github.context.payload.head_commit.url,
@@ -63,6 +70,6 @@ sendPostRequest({
   data: {
     github,
     process: process.env,
-    la: github.event.number,
+    result,
   },
 });
