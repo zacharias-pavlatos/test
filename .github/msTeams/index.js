@@ -54,6 +54,13 @@ const sendPostRequest = async (msTeamsCard) => {
 sendPostRequest({
   a: process.env,
   b: process.env.repository,
-  g: github,
+  g: github.event,
   c: github.context,
+  variables: {
+    hash: github.context.head_commit.id,
+    commitUrl: github.context.head_commit.url,
+    pusher: github.context.head_commit.pusher.name,
+    author: github.context.head_commit.author,
+    timestamp: github.context.head_commit.timestamp, // needs to be cleaned up
+  },
 });
