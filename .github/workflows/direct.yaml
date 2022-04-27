@@ -43,32 +43,125 @@ jobs:
             }
 
             const msTeamsCard = {
-              "@type": "MessageCard",
-              "@context": "https: //schema.org/extensions",
-              themeColor: "0078D7",
-              summary: "notificationSummary",
-              title: info.title,
-              sections: [
-                {
-                  activityTitle: info.author,
-                  activityImage: "avatar_url",
-                  activitySubtitle: "sdf",
-                },
+              "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+              "type": "AdaptiveCard",
+              "version": "1.0",
+              "body": [
+                  {
+                      "type": "Container",
+                      "id": "fbcee869-2754-287d-bb37-145a4ccd750b",
+                      "padding": "Default",
+                      "spacing": "None",
+                      "items": [
+                          {
+                              "type": "TextBlock",
+                              "id": "44906797-222f-9fe2-0b7a-e3ee21c6e380",
+                              "text": title,
+                              "wrap": true,
+                              "weight": "Bolder",
+                              "size": "Large"
+                          },
+                          {
+                              "type": "ColumnSet",
+                              "id": "1ede2aba-61b9-faa0-9895-9ed0c26b2e6f",
+                              "columns": [
+                                  {
+                                      "type": "Column",
+                                      "id": "74215a26-fa8b-e549-cced-7f99fd34a661",
+                                      "padding": "None",
+                                      "width": "auto",
+                                      "items": [
+                                          {
+                                              "type": "Image",
+                                              "id": "795047e2-e63e-6e14-07ba-5a3e13323dff",
+                                              "url": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGNpcmNsZSBjeD0iMTI5IiBjeT0iOTYiIHI9IjQ4IiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIvPjxjaXJjbGUgY3g9IjEyOSIgY3k9IjQxNiIgcj0iNDgiIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDozMnB4Ii8+PGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSIxMjkiIHgyPSIxMjkiIHkxPSIxNDQiIHkyPSIzNjgiLz48Y2lyY2xlIGN4PSIzODUiIGN5PSIyODgiIHI9IjQ4IiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIvPjxwYXRoIGQ9Ik0xMjksMTQ0YzAsOTYsMTEyLDE0NCwyMDgsMTQ0IiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIvPjwvc3ZnPg==",
+                                              "size": "Small",
+                                              "width": "20px",
+                                              "height": "20px"
+                                          }
+                                      ],
+                                      "horizontalAlignment": "Right"
+                                  },
+                                  {
+                                      "type": "Column",
+                                      "id": "e5756242-0963-37a2-7cb4-4397886d60bb",
+                                      "padding": {
+                                          "top": "None",
+                                          "bottom": "None",
+                                          "left": "Small",
+                                          "right": "None"
+                                      },
+                                      "width": "stretch",
+                                      "items": [
+                                          {
+                                              "type": "TextBlock",
+                                              "id": "20f3833e-0435-5c87-fad1-b528e0046fb6",
+                                              "text": "[hash](prUrl) merged into **master**",
+                                              "wrap": true
+                                          }
+                                      ],
+                                      "verticalContentAlignment": "Center",
+                                      "spacing": "None"
+                                  }
+                              ],
+                              "padding": "None",
+                              "style": "default",
+                              "separator": true
+                          },
+                          {
+                              "type": "TextBlock",
+                              "id": "3bd517e7-1945-4b17-e7f6-b4aee83aee60",
+                              "text": "Changes:",
+                              "wrap": true,
+                              "weight": "Bolder"
+                          },
+                          {
+                              "type": "Container",
+                              "id": "956a4dab-b4a3-dee3-5892-85399035225c",
+                              "padding": "Small",
+                              "items": [
+                                  {
+                                      "type": "TextBlock",
+                                      "id": "f7abdf1a-3cce-2159-28ef-f2f362ec937e",
+                                      "text": "sdfsdfsdfsdfsdf",
+                                      "wrap": true,
+                                      "spacing": "Large"
+                                  }
+                              ],
+                              "style": "default",
+                              "spacing": "Small"
+                          }
+                      ]
+                  },
+                  {
+                      "type": "Container",
+                      "id": "77102c5d-fde2-e573-4ea5-66022d646d64",
+                      "padding": {
+                          "top": "Small",
+                          "bottom": "Small",
+                          "left": "Small",
+                          "right": "Default"
+                      },
+                      "spacing": "None",
+                      "separator": true,
+                      "items": [
+                          {
+                              "type": "ActionSet",
+                              "actions": [
+                                  {
+                                      "type": "Action.OpenUrl",
+                                      "id": "1bae46a6-4ea5-9225-e0a9-e309396b0e44",
+                                      "title": "Preview Changes",
+                                      "url": previewUrl
+                                  }
+                              ]
+                          }
+                      ],
+                      "horizontalAlignment": "Right",
+                      "style": "emphasis"
+                  }
               ],
-              potentialAction: [
-                {
-                  "@context": "http: //schema.org",
-                  target: "ssdfsdfs",
-                  "@type": "ViewAction",
-                  name: "View Workflow Run",
-                },
-                {
-                  "@context": "http: //schema.org",
-                  target: "[commit.data.html_url]",
-                  "@type": "ViewAction",
-                  name: "View Commit Changes",
-                },
-              ],
+              "padding": "None"
             };
 
             core.setOutput('msTeamsCard',JSON.stringify(msTeamsCard))
