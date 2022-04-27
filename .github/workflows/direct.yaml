@@ -96,7 +96,7 @@ jobs:
                                           {
                                               "type": "TextBlock",
                                               "id": "20f3833e-0435-5c87-fad1-b528e0046fb6",
-                                              "text": "[info.hash](info.prUrl) merged into **master**",
+                                              "text": `[${info.hash}](${info.prUrl}) merged into **master**`,
                                               "wrap": true
                                           }
                                       ],
