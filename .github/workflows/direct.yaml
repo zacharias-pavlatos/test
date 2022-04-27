@@ -16,14 +16,34 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const getRelatedPrResponse = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+            const getRelatedPr = await github.rest.repos.listPullRequestsAssociatedWithCommit({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 commit_sha: process.env.GITHUB_SHA
              })
 
+            const prNumber = getRelatedPr.data.length > 0 ? getRelatedPr.data[0].number : undefined;
 
-              console.log(getRelatedPrResponse.data)
-              console.log(getRelatedPrResponse.data[0].number)
-              console.log("context")
-              console.log(context)
+            if (prNumber === undefined) {
+              console.log("No matching PR number for commit")
+              exit(1)
+            }
+
+            const info = {
+                prNumber,
+                title: context.payload.head_commit.message.split("\n")[0],
+                message: context.payload.head_commit.message.split("\n")[1],
+                commitUrl: context.payload.head_commit.url,
+                pusher: context.payload.pusher.name,
+                author: context.payload.head_commit.author,
+                commits: context.payload.commits,
+                hash: context.payload.head_commit.id,
+                timestamp: context.payload.head_commit.timestamp,
+
+                
+            }
+
+            console.log(getRelatedPr.data)
+            console.log(getRelatedPr.data[0].number)
+            console.log(info)
+            console.log(context)
