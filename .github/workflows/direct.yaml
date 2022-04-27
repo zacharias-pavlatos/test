@@ -31,6 +31,8 @@ jobs:
 
             const info = {
                 prNumber,
+                prUrla: getRelatedPr.data[0]._links.html.href,
+                prUrl: getRelatedPr.data[0].pull_request._links.html.href | undefined,
                 title,
                 message,
                 commitUrl: context.payload.head_commit.url,
@@ -41,4 +43,33 @@ jobs:
                 timestamp: context.payload.head_commit.timestamp,
             }
 
-            console.log(info)
+            const msTeamsCard = {
+              "@type": "MessageCard",
+              "@context": "https: //schema.org/extensions",
+              themeColor: "0078D7",
+              summary: "notificationSummary",
+              title: info.title,
+              sections: [
+                {
+                  activityTitle: info.author,
+                  activityImage: "avatar_url",
+                  activitySubtitle: "sdf",
+                },
+              ],
+              potentialAction: [
+                {
+                  "@context": "http: //schema.org",
+                  target: "ssdfsdfs",
+                  "@type": "ViewAction",
+                  name: "View Workflow Run",
+                },
+                {
+                  "@context": "http: //schema.org",
+                  target: "[commit.data.html_url]",
+                  "@type": "ViewAction",
+                  name: "View Commit Changes",
+                },
+              ],
+            };
+
+            console.log(info,msTeamsCard)
