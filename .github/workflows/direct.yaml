@@ -165,9 +165,20 @@ jobs:
             };
 
 
+            const msTeamsCardPayload = {
+              "type":"message",
+              "attachments":[
+                  {
+                    "contentType":"application/vnd.microsoft.card.adaptive",
+                    "contentUrl":null,
+                    "content": msTeamsCard
+                  }
+              ]
+            }
 
-            core.setOutput('msTeamsCard',JSON.stringify(msTeamsCard))
+
+            core.setOutput('msTeamsCard',JSON.stringify(msTeamsCardPayload))
             console.log(info,msTeamsCard)
         id: script
       - run: >-
-          curl -H 'Content-Type: application/json' -d '{"type": "message", "attachments":[ {"contentType":"application/vnd.microsoft.card.adaptive","contentUrl":null,"content":{  ${{steps.script.outputs.msTeamsCard}} }}] }' ${{ secrets.ms_teams_webhook }}
+          curl -H 'Content-Type: application/json' -d '${{steps.script.outputs.msTeamsCard}}' ${{ secrets.ms_teams_webhook }}
