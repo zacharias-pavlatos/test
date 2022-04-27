@@ -69,7 +69,12 @@ sendPostRequest({
   // timestamp: github.context.payload.head_commit.timestamp,
   // title: github.context.payload.head_commit.message.split("\n")[0],
   // message: github.context.payload.head_commit.message.split("\n")[1],
-  //commits: github.context.payload.commits,
+  // commits: github.context.payload.commits,
+  //
+  // "GITHUB_REF": "refs/pull/34/merge",
+  // "GITHUB_REF_NAME": "34/merge",
+  // prNumber: github.context.payload.number, //34
+  // prUrl: github.context.payload.pull_request._links.html.href, //"https://github.com/zacharias-pavlatos/test/pull/34"
   data: {
     github,
     process: process.env,
