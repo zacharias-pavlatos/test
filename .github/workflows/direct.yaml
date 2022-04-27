@@ -34,6 +34,7 @@ jobs:
                 prUrl: getRelatedPr.data[0]._links.html.href,
                 title,
                 message,
+                previewUrl: `https://deploy-preview-${prNumber}--airup-webshop-dev1.netlify.app/`
                 commitUrl: context.payload.head_commit.url,
                 pusher: context.payload.pusher.name,
                 author: context.payload.head_commit.author,
