@@ -56,7 +56,7 @@ jobs:
                           {
                               "type": "TextBlock",
                               "id": "44906797-222f-9fe2-0b7a-e3ee21c6e380",
-                              "text": title,
+                              "text": info.title,
                               "wrap": true,
                               "weight": "Bolder",
                               "size": "Large"
@@ -96,7 +96,7 @@ jobs:
                                           {
                                               "type": "TextBlock",
                                               "id": "20f3833e-0435-5c87-fad1-b528e0046fb6",
-                                              "text": "[hash](prUrl) merged into **master**",
+                                              "text": "[info.hash](info.prUrl) merged into **master**",
                                               "wrap": true
                                           }
                                       ],
@@ -152,7 +152,7 @@ jobs:
                                       "type": "Action.OpenUrl",
                                       "id": "1bae46a6-4ea5-9225-e0a9-e309396b0e44",
                                       "title": "Preview Changes",
-                                      "url": previewUrl
+                                      "url": info.previewUrl
                                   }
                               ]
                           }
