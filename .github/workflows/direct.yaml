@@ -74,6 +74,5 @@ jobs:
 
             core.setOutput('msTeamsCard',msTeamsCard)
             console.log(info,msTeamsCard)
-          id: script
-
+        id: script
       - run: echo ${{steps.script.outputs.msTeamsCard}}
