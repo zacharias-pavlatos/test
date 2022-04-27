@@ -31,8 +31,7 @@ jobs:
 
             const info = {
                 prNumber,
-                prUrla: getRelatedPr.data[0]._links.html.href,
-                prUrl: getRelatedPr.data[0].pull_request._links.html.href | undefined,
+                prUrl: getRelatedPr.data[0]._links.html.href,
                 title,
                 message,
                 commitUrl: context.payload.head_commit.url,
