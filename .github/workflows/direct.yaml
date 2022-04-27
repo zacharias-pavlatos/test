@@ -23,6 +23,6 @@ jobs:
              })
 
 
-              console.log(getRelatedPrResponse)
-              console.log(getRelatedPrResponse.number)
-              console.log(github.context)
+              console.log(getRelatedPrResponse.data)
+              console.log(getRelatedPrResponse.data[0].number)
+              console.log(context)
