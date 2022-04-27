@@ -1,4 +1,4 @@
-name: "MsTeams Notifier"
+name: "MsTeams Notifier Direct"
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
                 prUrl: getRelatedPr.data[0]._links.html.href,
                 title,
                 message,
-                previewUrl: `https://deploy-preview-${prNumber}--airup-webshop-dev1.netlify.app/`,
+                previewUrl: `https://deploy-preview-${prNumber}--airup-webshop-dev1.netlify.app`,
                 commitUrl: context.payload.head_commit.url,
                 pusher: context.payload.pusher.name,
                 author: context.payload.head_commit.author,
@@ -72,4 +72,7 @@ jobs:
               ],
             };
 
+            core.setOutput('msTeamsCard',msTeamsCard)
             console.log(info,msTeamsCard)
+        id: script
+      - run: echo ${{steps.script.outputs.msTeamsCard}}
