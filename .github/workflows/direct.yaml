@@ -25,4 +25,5 @@ jobs:
 
               console.log(getRelatedPrResponse.data)
               console.log(getRelatedPrResponse.data[0].number)
+              console.log("context")
               console.log(context)
