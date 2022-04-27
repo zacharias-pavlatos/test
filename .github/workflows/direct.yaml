@@ -39,11 +39,6 @@ jobs:
                 commits: context.payload.commits,
                 hash: context.payload.head_commit.id,
                 timestamp: context.payload.head_commit.timestamp,
-
-                
             }
 
-            console.log(getRelatedPr.data)
-            console.log(getRelatedPr.data[0].number)
             console.log(info)
-            console.log(context)
