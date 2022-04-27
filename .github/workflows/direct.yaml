@@ -78,4 +78,4 @@ jobs:
 
       # Gets the output from the script and dose a curl req to the hook
       - run: >-
-          curl -H 'Content-Type: application/json' -d '${{steps.script.outputs.msTeamsCard}}' ${{ secrets.test_hook }}
+          curl -H 'Content-Type: application/json' -d '${{ steps.script.outputs.msTeamsCard }}' ${{ secrets.test_hook }}
