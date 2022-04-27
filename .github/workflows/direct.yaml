@@ -164,19 +164,10 @@ jobs:
               "padding": "None"
             };
 
+
+
             core.setOutput('msTeamsCard',JSON.stringify(msTeamsCard))
             console.log(info,msTeamsCard)
         id: script
       - run: >-
-          curl -H 'Content-Type: application/json' -d '{
-              "type":"message",
-              "attachments":[
-                {
-                  "contentType":"application/vnd.microsoft.card.adaptive",
-                  "contentUrl":null,
-                  "content":{
-                    ${{steps.script.outputs.msTeamsCard}}
-                  }
-                }
-              ]
-            }' ${{ secrets.ms_teams_webhook }}
+          curl -H 'Content-Type: application/json' -d '{"type": "message", "attachments":[ {"contentType":"application/vnd.microsoft.card.adaptive","contentUrl":null,"content":{  ${{steps.script.outputs.msTeamsCard}} }}] }' ${{ secrets.ms_teams_webhook }}
