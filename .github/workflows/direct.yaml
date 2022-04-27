@@ -12,7 +12,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install axios
       - uses: actions/github-script@v6
         with:
           script: |
@@ -75,6 +74,5 @@ jobs:
             core.setOutput('msTeamsCard',JSON.stringify(msTeamsCard))
             console.log(info,msTeamsCard)
         id: script
-      - run: echo ${{steps.script.outputs.msTeamsCard}}
       - run: >-
           curl -H 'Content-Type: application/json' -d '${{steps.script.outputs.msTeamsCard}}' ${{ secrets.test_hook }}
