@@ -77,4 +77,4 @@ jobs:
         id: script
       - run: echo ${{steps.script.outputs.msTeamsCard}}
       - run: >-
-          curl -H 'Content-Type: application/json' -d ${{steps.script.outputs.msTeamsCard}} ${{ secrets.test_hook }}
+          curl -H 'Content-Type: application/json' -d '${{steps.script.outputs.msTeamsCard}}' ${{ secrets.test_hook }}
