@@ -3,6 +3,18 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 const axios = require("axios");
 
+const main = async () => {
+  const sha = core.getInput("sha", { required: true });
+  const octokit = github.getOctokit(token);
+  const context = github.context;
+  const result = await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    commit_sha: sha,
+  });
+};
+
+main();
 //Environment Variables
 const msTeamsWebhook = core.getInput("ms-teams-webhook-uri", {
   required: true,
