@@ -168,4 +168,4 @@ jobs:
             console.log(info,msTeamsCard)
         id: script
       - run: >-
-          curl -H 'Content-Type: application/json' -d '${{steps.script.outputs.msTeamsCard}}' ${{ secrets.ms_teams_webhook }}
+          curl -H 'Content-Type: application/json' -d '{"type":"message","attachments":[${{steps.script.outputs.msTeamsCard}}]}' ${{ secrets.ms_teams_webhook }}
