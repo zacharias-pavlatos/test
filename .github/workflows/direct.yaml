@@ -15,6 +15,7 @@ jobs:
       - run: npm install axios
       - uses: actions/github-script@v6
         with:
+          id: script
           script: |
             const getRelatedPr = await github.rest.repos.listPullRequestsAssociatedWithCommit({
                 owner: context.repo.owner,
@@ -74,5 +75,7 @@ jobs:
 
             core.setOutput('msTeamsCard',msTeamsCard)
             console.log(info,msTeamsCard)
-        id: script
-      - run: echo ${{steps.script.outputs.msTeamsCard}}
+
+      # Gets the output from the script and dose a curl req to the hook
+      - run: >-
+          curl -H 'Content-Type: application/json' -d '${{steps.script.outputs.msTeamsCard}}}' ${{ secrets.test_hook }}
