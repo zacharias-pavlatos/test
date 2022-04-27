@@ -22,3 +22,4 @@ jobs:
                 commit_sha: process.env.GITHUB_SHA
              })
              console.log(getRelatedPrResponse)
+             console.log(github.context)
