@@ -1,0 +1,25 @@
+name: "MsTeams Notifier Direct"
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  echo-input:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm install axios
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const getRelatedPrResponse = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: process.env.GITHUB_SHA
+             })
+             console.log(getRelatedPrResponse)
