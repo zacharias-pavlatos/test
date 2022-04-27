@@ -20,5 +20,6 @@ jobs:
         id: msTeamsJob
         with:
           ms-teams-webhook-uri: ${{ secrets.test_hook }}
+          github-token: ${{ secrets.github_token }}
       - name: Get the output time
         run: echo "The time was ${{ steps.msTeamsJob.outputs.time }}"

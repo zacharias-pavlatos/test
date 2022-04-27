@@ -1,6 +1,8 @@
 //inputs
 const core = require("@actions/core");
 const github = require("@actions/github");
+//const octokit = github.getOctokit();
+
 const axios = require("axios");
 
 const main = async () => {
@@ -16,6 +18,7 @@ const main = async () => {
 
 main();
 //Environment Variables
+//const token = core.getInput("github-token");
 const msTeamsWebhook = core.getInput("ms-teams-webhook-uri", {
   required: true,
 });
@@ -51,6 +54,13 @@ const msTeamsCard = {
 
 const sendPostRequest = async (msTeamsCard) => {
   try {
+    //const result =
+    // await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+    //   owner: context.repo.owner,
+    //   repo: context.repo.repo,
+    //   commit_sha: sha,
+    // });
+
     const response = await axios.post(msTeamsWebhook, msTeamsCard, {
       headers: {
         "Content-Type": "application/json",
@@ -64,15 +74,22 @@ const sendPostRequest = async (msTeamsCard) => {
 };
 
 sendPostRequest({
-  a: process.env,
-  b: process.env.repository,
-  g: github.event,
-  c: github.context,
-  variables: {
-    hash: github.context.head_commit,
-    commitUrl: github.context.head_commit.url,
-    pusher: github.context.head_commit.pusher.name,
-    author: github.context.head_commit.author,
-    timestamp: github.context.head_commit.timestamp, // needs to be cleaned up
+  // hash: github.context.payload.head_commit.id,
+  // commitUrl: github.context.payload.head_commit.url,
+  // pusher: github.context.payload.pusher.name,
+  // author: github.context.payload.head_commit.author,
+  // timestamp: github.context.payload.head_commit.timestamp,
+  // title: github.context.payload.head_commit.message.split("\n")[0],
+  // message: github.context.payload.head_commit.message.split("\n")[1],
+  // commits: github.context.payload.commits,
+  //
+  // "GITHUB_REF": "refs/pull/34/merge",
+  // "GITHUB_REF_NAME": "34/merge",
+  // prNumber: github.context.payload.number, //34
+  // prUrl: github.context.payload.pull_request._links.html.href, //"https://github.com/zacharias-pavlatos/test/pull/34"
+  data: {
+    github,
+    process: process.env,
+    // result,
   },
 });

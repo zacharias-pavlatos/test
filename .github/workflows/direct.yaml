@@ -1,4 +1,4 @@
-name: "MsTeams Notifier Direct"
+name: "MsTeams Notifier"
 
 on:
   push:
