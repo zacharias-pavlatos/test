@@ -56,115 +56,185 @@ jobs:
                       "spacing": "None",
                       "items": [
                           {
-                              "type": "TextBlock",
-                              "id": "44906797-222f-9fe2-0b7a-e3ee21c6e380",
-                              "text": info.title,
-                              "wrap": true,
-                              "weight": "Bolder",
-                              "size": "Large"
-                          },
-                          {
-                              "type": "ColumnSet",
-                              "id": "1ede2aba-61b9-faa0-9895-9ed0c26b2e6f",
-                              "columns": [
+                              "type": "Container",
+                              "id": "806fbac6-50ad-f79a-36a7-1f289cea6f7f",
+                              "padding": "None",
+                              "items": [
                                   {
-                                      "type": "Column",
-                                      "id": "74215a26-fa8b-e549-cced-7f99fd34a661",
-                                      "padding": "None",
-                                      "width": "auto",
-                                      "items": [
+                                      "type": "ColumnSet",
+                                      "columns": [
                                           {
-                                              "type": "Image",
-                                              "id": "795047e2-e63e-6e14-07ba-5a3e13323dff",
-                                              "url": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGNpcmNsZSBjeD0iMTI5IiBjeT0iOTYiIHI9IjQ4IiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIvPjxjaXJjbGUgY3g9IjEyOSIgY3k9IjQxNiIgcj0iNDgiIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS13aWR0aDozMnB4Ii8+PGxpbmUgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjMycHgiIHgxPSIxMjkiIHgyPSIxMjkiIHkxPSIxNDQiIHkyPSIzNjgiLz48Y2lyY2xlIGN4PSIzODUiIGN5PSIyODgiIHI9IjQ4IiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIvPjxwYXRoIGQ9Ik0xMjksMTQ0YzAsOTYsMTEyLDE0NCwyMDgsMTQ0IiBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MzJweCIvPjwvc3ZnPg==",
-                                              "size": "Small",
-                                              "width": "20px",
-                                              "height": "20px"
+                                              "type": "Column",
+                                              "id": "c8938dae-e2af-d15b-b7b5-67f46ad75e04",
+                                              "padding": "None",
+                                              "width": "auto",
+                                              "items": [
+                                                  {
+                                                      "type": "Container",
+                                                      "id": "9e75f7d3-aae4-d334-c521-12be272175d6",
+                                                      "padding": "None",
+                                                      "items": [
+                                                          {
+                                                              "type": "ColumnSet",
+                                                              "columns": [
+                                                                  {
+                                                                      "type": "Column",
+                                                                      "id": "b3e2ca55-fd5c-621b-8bfa-a7c979d90d71",
+                                                                      "padding": "None",
+                                                                      "width": "auto",
+                                                                      "items": [
+                                                                          {
+                                                                              "type": "Image",
+                                                                              "id": "e27467f5-b91b-f874-1156-cbfe979096d9",
+                                                                              "url": "https://cdn0.iconfinder.com/data/icons/phosphor-fill-vol-3/256/git-merge-fill-35.png",
+                                                                              "size": "Small",
+                                                                              "width": "20px",
+                                                                              "height": "20px"
+                                                                          }
+                                                                      ]
+                                                                  },
+                                                                  {
+                                                                      "type": "Column",
+                                                                      "id": "bd8c3006-2580-fbb8-ad49-944cc2c0e380",
+                                                                      "padding": {
+                                                                          "top": "None",
+                                                                          "bottom": "None",
+                                                                          "left": "Small",
+                                                                          "right": "None"
+                                                                      },
+                                                                      "width": "auto",
+                                                                      "items": [
+                                                                          {
+                                                                              "type": "TextBlock",
+                                                                              "id": "cb69c3e0-9733-d468-32de-72e6cdf547a9",
+                                                                              "text": "Merged",
+                                                                              "wrap": true,
+                                                                              "weight": "Bolder",
+                                                                              "spacing": "None"
+                                                                          }
+                                                                      ],
+                                                                      "spacing": "None"
+                                                                  }
+                                                              ],
+                                                              "padding": "None"
+                                                          }
+                                                      ]
+                                                  }
+                                              ]
                                           }
                                       ],
+                                      "padding": "None",
                                       "horizontalAlignment": "Right"
                                   },
                                   {
-                                      "type": "Column",
-                                      "id": "e5756242-0963-37a2-7cb4-4397886d60bb",
-                                      "padding": {
-                                          "top": "None",
-                                          "bottom": "None",
-                                          "left": "Small",
-                                          "right": "None"
-                                      },
-                                      "width": "stretch",
-                                      "items": [
+                                      "type": "TextBlock",
+                                      "id": "44906797-222f-9fe2-0b7a-e3ee21c6e380",
+                                      "text": info.title,
+                                      "weight": "Bolder",
+                                      "size": "Large",
+                                      "wrap": true,
+                                      "color": "Accent",
+                                      "spacing": "None"
+                                  },
+                                  {
+                                      "type": "ColumnSet",
+                                      "columns": [
                                           {
-                                              "type": "TextBlock",
-                                              "id": "20f3833e-0435-5c87-fad1-b528e0046fb6",
-                                              "text": `[${info.hash.substring(0, 7)}](${info.prUrl}) merged into **master**`,
-                                              "wrap": true
+                                              "type": "Column",
+                                              "id": "d98c4e5d-0a53-9c19-96ed-5124381ddf6c",
+                                              "padding": "None",
+                                              "width": "auto",
+                                              "items": [
+                                                  {
+                                                      "type": "TextBlock",
+                                                      "id": "9a157b64-fb1f-b146-9964-70cd5ddf3cb3",
+                                                      "text": `[${info.hash.substring(0, 7)}](${info.prUrl})`,
+                                                      "wrap": true
+                                                  }
+                                              ]
+                                          },
+                                          {
+                                              "type": "Column",
+                                              "id": "7d88f63e-61de-7c0e-af6b-d3ed116cdbe5",
+                                              "padding": {
+                                                  "top": "None",
+                                                  "bottom": "None",
+                                                  "left": "Small",
+                                                  "right": "Small"
+                                              },
+                                              "width": "auto",
+                                              "items": [
+                                                  {
+                                                      "type": "Image",
+                                                      "id": "d3bcd8f5-1620-dc4b-4f60-f4ce4309267d",
+                                                      "url": "https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Arrow_Right-30.png",
+                                                      "width": "20px",
+                                                      "horizontalAlignment": "Center",
+                                                      "size": "Stretch",
+                                                      "spacing": "None",
+                                                      "height": "20px"
+                                                  }
+                                              ],
+                                              "spacing": "None"
+                                          },
+                                          {
+                                              "type": "Column",
+                                              "items": [
+                                                  {
+                                                      "type": "TextBlock",
+                                                      "id": "df189bd7-6dad-99ea-4021-ac9b8ef69624",
+                                                      "text": "**master**",
+                                                      "wrap": true
+                                                  }
+                                              ],
+                                              "padding": "None",
+                                              "width": "auto",
+                                              "spacing": "None"
                                           }
                                       ],
-                                      "verticalContentAlignment": "Center",
-                                      "spacing": "None"
+                                      "padding": "None",
+                                      "spacing": "Small"
                                   }
                               ],
-                              "padding": "None",
                               "style": "default",
                               "separator": true
                           },
                           {
-                              "type": "TextBlock",
-                              "id": "3bd517e7-1945-4b17-e7f6-b4aee83aee60",
-                              "text": "Changes:",
-                              "wrap": true,
-                              "weight": "Bolder"
-                          },
-                          {
                               "type": "Container",
-                              "id": "956a4dab-b4a3-dee3-5892-85399035225c",
-                              "padding": "Small",
+                              "id": "4f98e073-5295-7248-ddfa-9d64d59b3e03",
+                              "padding": "None",
                               "items": [
                                   {
                                       "type": "TextBlock",
                                       "id": "f7abdf1a-3cce-2159-28ef-f2f362ec937e",
-                                      "text": "sdfsdfsdfsdfsdf",
-                                      "wrap": true,
-                                      "spacing": "Large"
+                                      "text": info.message,
+                                      "wrap": true
                                   }
                               ],
-                              "style": "default",
-                              "spacing": "Small"
-                          }
-                      ]
-                  },
-                  {
-                      "type": "Container",
-                      "id": "77102c5d-fde2-e573-4ea5-66022d646d64",
-                      "padding": {
-                          "top": "Small",
-                          "bottom": "Small",
-                          "left": "Small",
-                          "right": "Default"
-                      },
-                      "spacing": "None",
-                      "separator": true,
-                      "items": [
+                              "separator": true,
+                              "spacing": "Large"
+                          },
                           {
                               "type": "ActionSet",
+                              "id": "c8a5ba7e-7ec6-53ae-79da-0cfb952a527e",
                               "actions": [
                                   {
                                       "type": "Action.OpenUrl",
-                                      "id": "1bae46a6-4ea5-9225-e0a9-e309396b0e44",
+                                      "id": "9b98430f-c858-0317-d415-48e258f98472",
                                       "title": "Preview Changes",
-                                      "url": info.previewUrl
+                                      "url": info.previewUrl,
+                                      "style": "positive",
+                                      "isPrimary": true
                                   }
-                              ]
+                              ],
+                              "separator": true,
+                              "spacing": "Large"
                           }
-                      ],
-                      "horizontalAlignment": "Right",
-                      "style": "emphasis"
+                      ]
                   }
               ],
               "padding": "None"
-            };
+            }
 
 
             const msTeamsCardPayload = {
