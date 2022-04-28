@@ -21,7 +21,7 @@ jobs:
                 commit_sha: process.env.GITHUB_SHA
              })
 
-             console.log(getRelatedPr,context)
+             console.log(getRelatedPr,context,${{ github.sha }},${{ env }})
 
             const prNumber = getRelatedPr.data.length > 0 ? getRelatedPr.data[0].number : undefined;
             if (prNumber === undefined) {
