@@ -138,7 +138,7 @@ jobs:
                                     {
                                         "type": "TextBlock",
                                         "id": "44906797-222f-9fe2-0b7a-e3ee21c6e380",
-                                        "text": `[${info.title}](${info.commitUrl})`,
+                                        "text": `[${info.title}](${info.prUrl})`,
                                         "weight": "Bolder",
                                         "size": "Large",
                                         "wrap": true,
@@ -157,7 +157,7 @@ jobs:
                                                     {
                                                         "type": "TextBlock",
                                                         "id": "9a157b64-fb1f-b146-9964-70cd5ddf3cb3",
-                                                        "text": `[${info.hash.substring(0, 7)}](${info.prUrl})`,
+                                                        "text": `[${info.hash.substring(0, 7)}](${info.commitUrl})`,
                                                         "wrap": true,
                                                         "spacing": "Small"
                                                     }
