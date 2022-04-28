@@ -27,6 +27,9 @@ jobs:
               exit(1)
             }
             console.log(context.payload.head_commit.message)
+            console.log("-------------")
+            console.log(context.payload.head_commit)
+            console.log("-------------")
             const [title, message] = context.payload.head_commit.message.split("\n")
             console.log("t: "+title, "m: "+message, context.payload.head_commit.message)
             const info = {
