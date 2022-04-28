@@ -26,8 +26,9 @@ jobs:
               console.log("No matching PR number")
               exit(1)
             }
+            console.log(context.payload.head_commit.message)
             const [title, message] = context.payload.head_commit.message.split("\n")
-            console.log(title, message,context.payload.head_commit.message)
+            console.log("t: "+title, "m: "+message, context.payload.head_commit.message)
             const info = {
                 prNumber,
                 prUrl: getRelatedPr.data[0]._links.html.href,
