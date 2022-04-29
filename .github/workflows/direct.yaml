@@ -1,261 +1,261 @@
-name: "MsTeams Notifier Direct"
+name: 'MsTeams Notifier'
 
 on:
-  push:
-    branches: [main]
+    push:
+        branches: [main]
 
 jobs:
-  echo-input:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            const getRelatedPr = await github.rest.repos.listPullRequestsAssociatedWithCommit({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                commit_sha: process.env.GITHUB_SHA
-             })
+    ms_teams_notifier:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - uses: actions/github-script@v6
+              with:
+                  script: |
+                        const getRelatedPr = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                            owner: context.repo.owner,
+                            repo: context.repo.repo,
+                            commit_sha: process.env.GITHUB_SHA
+                        })
 
-            const prNumber = getRelatedPr.data.length > 0 ? getRelatedPr.data[0].number : undefined;
-            if (prNumber === undefined) {
-              console.log("No matching PR number")
-              exit(1)
-            }
+                        const prNumber = getRelatedPr.data.length > 0 ? getRelatedPr.data[0].number : undefined;
+                        if (prNumber === undefined) {
+                            console.log("No matching PR number")
+                            exit(1)
+                        }
 
-            const [title, message] = context.payload.head_commit.message.split("\n\n")
-            const info = {
-                prNumber,
-                prUrl: getRelatedPr.data[0]._links.html.href,
-                title,
-                message,
-                previewUrl: `https://deploy-preview-${prNumber}--airup-webshop-dev1.netlify.app`,
-                commitUrl: context.payload.head_commit.url,
-                pusher: context.payload.pusher.name,
-                author: context.payload.head_commit.author,
-                commits: context.payload.commits,
-                hash: context.payload.head_commit.id,
-                timestamp: context.payload.head_commit.timestamp,
-            }
+                        const [title, message] = context.payload.head_commit.message.split("\n\n")
+                        const info = {
+                            prNumber,
+                            prUrl: getRelatedPr.data[0]._links.html.href,
+                            title,
+                            message,
+                            previewUrl: `https://deploy-preview-${prNumber}--airup-webshop-dev1.netlify.app`,
+                            commitUrl: context.payload.head_commit.url,
+                            pusher: context.payload.pusher.name,
+                            author: context.payload.head_commit.author,
+                            commits: context.payload.commits,
+                            hash: context.payload.head_commit.id,
+                            timestamp: context.payload.head_commit.timestamp,
+                        }
 
-            const msTeamsCard = {
-                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-                "type": "AdaptiveCard",
-                "version": "1.0",
-                "body": [
-                    {
-                        "type": "Container",
-                        "id": "fbcee869-2754-287d-bb37-145a4ccd750b",
-                        "padding": {
-                            "top": "Small",
-                            "bottom": "Default",
-                            "left": "Default",
-                            "right": "Default"
-                        },
-                        "spacing": "None",
-                        "items": [
-                            {
-                                "type": "Container",
-                                "id": "806fbac6-50ad-f79a-36a7-1f289cea6f7f",
-                                "padding": "None",
-                                "items": [
-                                    {
-                                        "type": "ColumnSet",
-                                        "columns": [
-                                            {
-                                                "type": "Column",
-                                                "id": "e1e39951-7242-7550-5b25-b4f6691a532b",
-                                                "padding": "None",
-                                                "width": "stretch"
-                                            },
-                                            {
-                                                "type": "Column",
-                                                "id": "0b027575-517c-7afd-adf4-b7214458154f",
-                                                "padding": "None",
-                                                "width": "auto",
-                                                "items": [
-                                                    {
-                                                        "type": "Container",
-                                                        "id": "ea6a7c50-c34e-c104-df22-5c116f7c7b55",
-                                                        "padding": "None",
-                                                        "items": [
-                                                            {
-                                                                "type": "ColumnSet",
-                                                                "columns": [
-                                                                    {
-                                                                        "type": "Column",
-                                                                        "id": "13c071c8-015c-0c96-eaee-70bd22bcf36d",
-                                                                        "padding": "None",
-                                                                        "width": "auto",
-                                                                        "items": [
-                                                                            {
-                                                                                "type": "Image",
-                                                                                "id": "e92901ef-142e-dee9-3210-3e5eae539bca",
-                                                                                "url": "https://cdn0.iconfinder.com/data/icons/phosphor-fill-vol-3/256/git-merge-fill-35.png",
-                                                                                "size": "Small",
-                                                                                "width": "20px",
-                                                                                "height": "20px"
-                                                                            }
-                                                                        ]
-                                                                    },
-                                                                    {
-                                                                        "type": "Column",
-                                                                        "id": "d8b4658f-70b1-1635-6051-431ed325e554",
-                                                                        "padding": {
-                                                                            "top": "None",
-                                                                            "bottom": "None",
-                                                                            "left": "Small",
-                                                                            "right": "None"
-                                                                        },
-                                                                        "width": "auto",
-                                                                        "items": [
-                                                                            {
-                                                                                "type": "TextBlock",
-                                                                                "id": "90f6c3aa-364e-755e-f5a8-c830135669f0",
-                                                                                "text": "Merged",
-                                                                                "wrap": true,
-                                                                                "weight": "Bolder",
-                                                                                "spacing": "None"
-                                                                            }
-                                                                        ],
-                                                                        "spacing": "None"
-                                                                    }
-                                                                ],
-                                                                "padding": "None"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        ],
-                                        "padding": "None",
-                                        "horizontalAlignment": "Right"
+                        const msTeamsCard = {
+                            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                            "type": "AdaptiveCard",
+                            "version": "1.0",
+                            "body": [
+                                {
+                                    "type": "Container",
+                                    "id": "fbcee869-2754-287d-bb37-145a4ccd750b",
+                                    "padding": {
+                                        "top": "Small",
+                                        "bottom": "Default",
+                                        "left": "Default",
+                                        "right": "Default"
                                     },
-                                    {
-                                        "type": "TextBlock",
-                                        "id": "44906797-222f-9fe2-0b7a-e3ee21c6e380",
-                                        "text": `[${info.title}](${info.prUrl})`,
-                                        "weight": "Bolder",
-                                        "size": "Large",
-                                        "wrap": true,
-                                        "color": "Accent",
-                                        "spacing": "Small"
-                                    },
-                                    {
-                                        "type": "ColumnSet",
-                                        "columns": [
-                                            {
-                                                "type": "Column",
-                                                "id": "d98c4e5d-0a53-9c19-96ed-5124381ddf6c",
-                                                "padding": "None",
-                                                "width": "auto",
-                                                "items": [
-                                                    {
-                                                        "type": "TextBlock",
-                                                        "id": "9a157b64-fb1f-b146-9964-70cd5ddf3cb3",
-                                                        "text": `[${info.hash.substring(0, 7)}](${info.commitUrl})`,
-                                                        "wrap": true,
-                                                        "spacing": "Small"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "Column",
-                                                "id": "7d88f63e-61de-7c0e-af6b-d3ed116cdbe5",
-                                                "padding": "None",
-                                                "width": "25px",
-                                                "items": [
-                                                    {
-                                                        "type": "Image",
-                                                        "id": "d3bcd8f5-1620-dc4b-4f60-f4ce4309267d",
-                                                        "url": "https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Arrow_Right-22.png",
-                                                        "width": "13px",
-                                                        "horizontalAlignment": "Center",
-                                                        "size": "Stretch",
-                                                        "spacing": "None",
-                                                        "height": "13px"
-                                                    }
-                                                ],
-                                                "horizontalAlignment": "Center",
-                                                "spacing": "None",
-                                                "verticalContentAlignment": "Center"
-                                            },
-                                            {
-                                                "type": "Column",
-                                                "items": [
-                                                    {
-                                                        "type": "TextBlock",
-                                                        "id": "df189bd7-6dad-99ea-4021-ac9b8ef69624",
-                                                        "text": "master",
-                                                        "wrap": true,
-                                                        "spacing": "None"
-                                                    }
-                                                ],
-                                                "padding": "None",
-                                                "width": "auto",
-                                                "spacing": "None"
-                                            }
-                                        ],
-                                        "padding": "None",
-                                        "spacing": "Small"
-                                    }
-                                ],
-                                "style": "default",
-                                "separator": true
-                            },
-                            {
-                                "type": "Container",
-                                "id": "4f98e073-5295-7248-ddfa-9d64d59b3e03",
-                                "padding": "None",
-                                "items": [
-                                    {
-                                        "type": "TextBlock",
-                                        "id": "f7abdf1a-3cce-2159-28ef-f2f362ec937e",
-                                        "text": info.message,
-                                        "wrap": true
-                                    }
-                                ],
-                                "separator": true,
-                                "spacing": "Large"
-                            },
-                            {
-                                "type": "ActionSet",
-                                "id": "c8a5ba7e-7ec6-53ae-79da-0cfb952a527e",
-                                "actions": [
-                                    {
-                                        "type": "Action.OpenUrl",
-                                        "id": "9b98430f-c858-0317-d415-48e258f98472",
-                                        "title": "Preview Changes",
-                                        "url": "https://amdesigner.azurewebsites.net",
-                                        "style": "positive",
-                                        "isPrimary": true
-                                    }
-                                ],
-                                "separator": true,
-                                "spacing": "Large"
-                            }
-                        ]
-                    }
-                ],
-                "padding": "None"
-            }
+                                    "spacing": "None",
+                                    "items": [
+                                        {
+                                            "type": "Container",
+                                            "id": "806fbac6-50ad-f79a-36a7-1f289cea6f7f",
+                                            "padding": "None",
+                                            "items": [
+                                                {
+                                                    "type": "ColumnSet",
+                                                    "columns": [
+                                                        {
+                                                            "type": "Column",
+                                                            "id": "e1e39951-7242-7550-5b25-b4f6691a532b",
+                                                            "padding": "None",
+                                                            "width": "stretch"
+                                                        },
+                                                        {
+                                                            "type": "Column",
+                                                            "id": "0b027575-517c-7afd-adf4-b7214458154f",
+                                                            "padding": "None",
+                                                            "width": "auto",
+                                                            "items": [
+                                                                {
+                                                                    "type": "Container",
+                                                                    "id": "ea6a7c50-c34e-c104-df22-5c116f7c7b55",
+                                                                    "padding": "None",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "ColumnSet",
+                                                                            "columns": [
+                                                                                {
+                                                                                    "type": "Column",
+                                                                                    "id": "13c071c8-015c-0c96-eaee-70bd22bcf36d",
+                                                                                    "padding": "None",
+                                                                                    "width": "auto",
+                                                                                    "items": [
+                                                                                        {
+                                                                                            "type": "Image",
+                                                                                            "id": "e92901ef-142e-dee9-3210-3e5eae539bca",
+                                                                                            "url": "https://cdn0.iconfinder.com/data/icons/phosphor-fill-vol-3/256/git-merge-fill-35.png",
+                                                                                            "size": "Small",
+                                                                                            "width": "20px",
+                                                                                            "height": "20px"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "Column",
+                                                                                    "id": "d8b4658f-70b1-1635-6051-431ed325e554",
+                                                                                    "padding": {
+                                                                                        "top": "None",
+                                                                                        "bottom": "None",
+                                                                                        "left": "Small",
+                                                                                        "right": "None"
+                                                                                    },
+                                                                                    "width": "auto",
+                                                                                    "items": [
+                                                                                        {
+                                                                                            "type": "TextBlock",
+                                                                                            "id": "90f6c3aa-364e-755e-f5a8-c830135669f0",
+                                                                                            "text": "Merged",
+                                                                                            "wrap": true,
+                                                                                            "weight": "Bolder",
+                                                                                            "spacing": "None"
+                                                                                        }
+                                                                                    ],
+                                                                                    "spacing": "None"
+                                                                                }
+                                                                            ],
+                                                                            "padding": "None"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "padding": "None",
+                                                    "horizontalAlignment": "Right"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "id": "44906797-222f-9fe2-0b7a-e3ee21c6e380",
+                                                    "text": `[${info.title}](${info.prUrl})`,
+                                                    "weight": "Bolder",
+                                                    "size": "Large",
+                                                    "wrap": true,
+                                                    "color": "Accent",
+                                                    "spacing": "Small"
+                                                },
+                                                {
+                                                    "type": "ColumnSet",
+                                                    "columns": [
+                                                        {
+                                                            "type": "Column",
+                                                            "id": "d98c4e5d-0a53-9c19-96ed-5124381ddf6c",
+                                                            "padding": "None",
+                                                            "width": "auto",
+                                                            "items": [
+                                                                {
+                                                                    "type": "TextBlock",
+                                                                    "id": "9a157b64-fb1f-b146-9964-70cd5ddf3cb3",
+                                                                    "text": `[${info.hash.substring(0, 7)}](${info.commitUrl})`,
+                                                                    "wrap": true,
+                                                                    "spacing": "Small"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "Column",
+                                                            "id": "7d88f63e-61de-7c0e-af6b-d3ed116cdbe5",
+                                                            "padding": "None",
+                                                            "width": "25px",
+                                                            "items": [
+                                                                {
+                                                                    "type": "Image",
+                                                                    "id": "d3bcd8f5-1620-dc4b-4f60-f4ce4309267d",
+                                                                    "url": "https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Arrow_Right-22.png",
+                                                                    "width": "13px",
+                                                                    "horizontalAlignment": "Center",
+                                                                    "size": "Stretch",
+                                                                    "spacing": "None",
+                                                                    "height": "13px"
+                                                                }
+                                                            ],
+                                                            "horizontalAlignment": "Center",
+                                                            "spacing": "None",
+                                                            "verticalContentAlignment": "Center"
+                                                        },
+                                                        {
+                                                            "type": "Column",
+                                                            "items": [
+                                                                {
+                                                                    "type": "TextBlock",
+                                                                    "id": "df189bd7-6dad-99ea-4021-ac9b8ef69624",
+                                                                    "text": "master",
+                                                                    "wrap": true,
+                                                                    "spacing": "None"
+                                                                }
+                                                            ],
+                                                            "padding": "None",
+                                                            "width": "auto",
+                                                            "spacing": "None"
+                                                        }
+                                                    ],
+                                                    "padding": "None",
+                                                    "spacing": "Small"
+                                                }
+                                            ],
+                                            "style": "default",
+                                            "separator": true
+                                        },
+                                        {
+                                            "type": "Container",
+                                            "id": "4f98e073-5295-7248-ddfa-9d64d59b3e03",
+                                            "padding": "None",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "id": "f7abdf1a-3cce-2159-28ef-f2f362ec937e",
+                                                    "text": info.message,
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "separator": true,
+                                            "spacing": "Large"
+                                        },
+                                        {
+                                            "type": "ActionSet",
+                                            "id": "c8a5ba7e-7ec6-53ae-79da-0cfb952a527e",
+                                            "actions": [
+                                                {
+                                                    "type": "Action.OpenUrl",
+                                                    "id": "9b98430f-c858-0317-d415-48e258f98472",
+                                                    "title": "Preview Changes",
+                                                    "url": "https://amdesigner.azurewebsites.net",
+                                                    "style": "positive",
+                                                    "isPrimary": true
+                                                }
+                                            ],
+                                            "separator": true,
+                                            "spacing": "Large"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "padding": "None"
+                        }
 
-            const msTeamsCardPayload = {
-              "type":"message",
-              "attachments":[
-                  {
-                    "contentType":"application/vnd.microsoft.card.adaptive",
-                    "contentUrl":null,
-                    "content": msTeamsCard
-                  }
-              ]
-            }
+                        const msTeamsCardPayload = {
+                            "type":"message",
+                            "attachments":[
+                                {
+                                "contentType":"application/vnd.microsoft.card.adaptive",
+                                "contentUrl":null,
+                                "content": msTeamsCard
+                                }
+                            ]
+                        }
 
-            core.setOutput('msTeamsCard',JSON.stringify(msTeamsCardPayload))
-        id: script
-      - run: >-
-          curl -H 'Content-Type: application/json' -d '${{steps.script.outputs.msTeamsCard}}' ${{ secrets.ms_teams_webhook }}
+                        core.setOutput('msTeamsCard', JSON.stringify(msTeamsCardPayload))
+                id: script
+                - run: >-
+                    curl -H 'Content-Type: application/json' -d '${{ steps.script.outputs.msTeamsCard }}' ${{ secrets.ms_teams_webhook }}
